@@ -7,6 +7,27 @@
 	<script src="script/Person.js"></script>
 	<script src="script/Account.js"></script>
 	<script src="script/transferService.js"></script>
+	<script>
+		var personJohn = new Person("John", "01/01/1980");
+		var accountJohn = new Account("John account", personJohn);
+		var accountJohn2 = new Account("John account2", personJohn);
+		transferService.register(personJohn, accountJohn, 500);
+		transferService.register(personJohn, accountJohn2, 20000);
+		console.log(transferService.getPersonAccounts(personJohn));
+
+		var personAnn = new Person("Ann", "01/01/1980");
+		var accountAnn = new Account("Ann account", personAnn);
+		transferService.register(personAnn, accountAnn, 5000);
+		console.log(transferService.getPersonAccounts(personAnn));
+
+		//transferService.transfer(accountJohn, accountAnn, 2000);
+		transferService.transfer(accountJohn2, accountAnn, 2000);
+		
+		console.log(accountJohn._person._name + " " + accountJohn._balance);
+		console.log(accountJohn2._person._name + " " +  accountJohn2._balance);
+		console.log(accountAnn._person._name + " " + accountAnn._balance);
+
+	</script>
 </body>
 </body>
 </html>
